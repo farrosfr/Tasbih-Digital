@@ -1,0 +1,146 @@
+/* General Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background Animation */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #121212, #003333, #004d4d);
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Container */
+.container {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.count-number {
+  font-size: 6rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #00ff7f;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Buttons */
+.button-container {
+  position: relative;
+}
+
+.circle-btn {
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #1c3f3f;
+  color: #00ff7f;
+  box-shadow: 0 4px 15px rgba(0, 255, 127, 0.3);
+}
+
+.circle-btn.large {
+  width: 150px;
+  height: 150px;
+  font-size: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.circle-btn.small {
+  width: 80px;
+  height: 80px;
+  font-size: 2rem;
+  position: absolute;
+  bottom: -70px; /* Lebih kebawah */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.circle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 255, 127, 0.8);
+}
+
+/* Reset Button */
+.reset-btn {
+  margin-top: 4rem; /* Tambahkan jarak */
+  padding: 0.8rem 2rem;
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: #ff3333;
+}
+
+/* Footer */
+footer {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.palestine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.palestine img {
+  width: 25px;
+  height: 15px;
+}
+
+.hashtag {
+  font-size: 0.9rem;
+  color: #aaa;
+  animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
