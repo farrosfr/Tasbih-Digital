@@ -82,7 +82,7 @@ function updateCounter() {
   countDisplay.classList.add("updated");
   setTimeout(() => {
     countDisplay.classList.remove("updated");
-  }, 200);
+  }, 20);
 }
 
 // Modifikasi reset untuk menghapus nilai
