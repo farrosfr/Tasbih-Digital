@@ -45,7 +45,7 @@ function updateCounter() {
   // Hapus kelas setelah animasi selesai (durasinya cocok dengan transisi CSS)
   setTimeout(() => {
     countDisplay.classList.remove("updated");
-  }, 200); // Durasi 0.2s = 200ms
+  }, 20); // Durasi 0.2s = 200ms
 }
 
 // Handle Feedback (Sound and Vibration)
