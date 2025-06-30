@@ -56,8 +56,11 @@ function handleFeedback() {
     clickSound.play();
   }
   if (vibrateOption.checked && navigator.vibrate) {
-    // Getaran pendek untuk feedback yang cepat
-    navigator.vibrate(50); // getar selama 50ms
+    if (count > 0 && (count % 33 === 0 || count % 100 === 0)) {
+      navigator.vibrate([150, 50, 150]); // Pola getaran khusus
+    } else {
+      navigator.vibrate(50); // Getaran standar
+    }
   }
 }
 
