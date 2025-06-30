@@ -10,6 +10,7 @@ body {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  -webkit-tap-highlight-color: transparent; /* Mencegah highlight biru saat di-tap di mobile */
 }
 
 /* Background Animation */
@@ -21,7 +22,7 @@ body {
   height: 100%;
   background: linear-gradient(45deg, #121212, #003333, #004d4d);
   background-size: 200% 200%;
-  animation: gradientAnimation 10s ease infinite;
+  animation: gradientAnimation 15s ease infinite; /* Durasi diperlambat */
   z-index: -1;
 }
 
@@ -49,7 +50,12 @@ body {
   font-weight: bold;
   margin-bottom: 2rem;
   color: #00ff7f;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out; /* Transisi dipindahkan ke sini */
+}
+
+/* Kelas ini akan ditambahkan via JavaScript untuk memicu animasi */
+.count-number.updated {
+  transform: scale(1.15);
 }
 
 /* Buttons */
@@ -62,10 +68,11 @@ body {
   border-radius: 50%;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
   background-color: #1c3f3f;
   color: #00ff7f;
-  box-shadow: 0 4px 15px rgba(0, 255, 127, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 255, 127, 0.2);
+  /* Transisi dibuat lebih komprehensif dan halus */
+  transition: all 0.3s ease-in-out;
 }
 
 .circle-btn.large {
@@ -81,34 +88,105 @@ body {
   height: 80px;
   font-size: 2rem;
   position: absolute;
-  bottom: -70px; /* Lebih kebawah */
+  bottom: -70px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
 }
 
 .circle-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(0, 255, 127, 0.8);
+  transform: scale(1.05) translateX(-50%); /* Disesuaikan untuk tombol kecil */
+  box-shadow: 0 0 25px rgba(0, 255, 127, 0.6);
 }
+
+.circle-btn.large:hover {
+  transform: scale(1.05); /* Hover khusus untuk tombol besar */
+}
+
+/* Efek saat tombol ditekan, lebih halus */
+.circle-btn:active {
+  transform: scale(0.95) translateX(-50%);
+  box-shadow: 0 2px 10px rgba(0, 255, 127, 0.3);
+}
+
+.circle-btn.large:active {
+  transform: scale(0.95); /* Active khusus untuk tombol besar */
+}
+
 
 /* Reset Button */
 .reset-btn {
-  margin-top: 6rem; /* Menambahkan lebih banyak jarak ke bawah */
+  margin-top: 6rem;
   padding: 0.8rem 2rem;
   background-color: #ff4d4d;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px; /* Sedikit lebih rounded */
   cursor: pointer;
   font-size: 1.2rem;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
 }
 
 .reset-btn:hover {
   background-color: #ff3333;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 77, 77, 0.5);
 }
 
+.reset-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(255, 77, 77, 0.3);
+}
+
+/* Options -- Desain Checkbox Baru */
+.options {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    color: #00ff7f;
+    cursor: pointer;
+    user-select: none; /* Mencegah teks terseleksi */
+}
+
+.options input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #00ff7f;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.options input[type="checkbox"]:checked {
+    background-color: #00ff7f;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+}
+
+/* Membuat tanda centang menggunakan pseudo-element */
+.options input[type="checkbox"]:checked::before {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #121212;
+    font-size: 16px;
+    font-weight: bold;
+}
 
 /* Footer */
 footer {
@@ -134,63 +212,15 @@ footer {
 .hashtag {
   font-size: 0.9rem;
   color: #aaa;
-  animation: fadeIn 2s ease-in-out infinite alternate;
+  /* Animasi dibuat lebih subtle */
+  animation: fadeIn 3s ease-in-out infinite alternate;
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0.6;
+    opacity: 0.7;
   }
   to {
     opacity: 1;
   }
-}
-
-/* Tambahkan efek pada background saat tombol diklik */
-.circle-btn:active ~ .background {
-  animation: clickAnimation 0.5s ease-out forwards;
-}
-
-@keyframes clickAnimation {
-  0% {
-    transform: scale(1);
-    filter: blur(0);
-    background-position: 50% 50%;
-  }
-  50% {
-    transform: scale(1.1);
-    filter: blur(5px);
-    background-position: 100% 50%;
-  }
-  100% {
-    transform: scale(1);
-    filter: blur(0);
-    background-position: 50% 50%;
-  }
-}
-
-.options label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    color: #00ff7f;
-    cursor: pointer;
-}
-
-.options input[type="checkbox"] {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #00ff7f;
-    border-radius: 5px;
-    background-color: transparent;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.options input[type="checkbox"]:checked {
-    background-color: #00ff7f;
-    box-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
 }
